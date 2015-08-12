@@ -14,6 +14,17 @@
         <version>1.2.5.RELEASE</version>
     </parent>
 
+    <repositories>
+        <repository>
+            <id>cloudera</id>
+            <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+        </repository>
+        <repository>
+            <id>org.trustedanalytics</id>
+            <url>https://maven.gotapaas.com/</url>
+        </repository>
+    </repositories>
+
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
