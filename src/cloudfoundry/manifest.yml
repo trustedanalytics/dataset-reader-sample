@@ -6,7 +6,6 @@ applications:
   host: dataset-reader
   path: target/dataset-reader-sample-${version}.jar
   services: 
-  - sso
   - hdfs-instance
   env:
     SPRING_PROFILES_ACTIVE: "cloud"
