@@ -1,0 +1,6 @@
+/target/
+
+.idea/*
+*.iml
+
+/manifest.yml

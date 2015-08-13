@@ -1,0 +1,9 @@
+server.port: 8080
+
+logging.level:
+  org.springframework.security: DEBUG
+  org.trustedanalytics: DEBUG
+
+hdfs:
+  uri: ${vcap.services.hdfs-instance.credentials.uri:}
+  user: ${vcap.services.hdfs-instance.credentials.user:cf}

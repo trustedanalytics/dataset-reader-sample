@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dataset access demo</title>
+    <script type="text/javascript"
+            src="http://code.jquery.com/jquery-2.1.4.min.js">
+    </script>
+    <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+<div class="main">
+    <h1><img src="img/logo.png" /> IDF 2015 San Francisco</h1>
+    <table id="table"></table>
+</div>
+<script type="text/javascript">
+    $.get('/rest/parsed-dataset', null, function onSuccess(data){
+        data.forEach(function(row){
+            var r = $('<tr></tr>');
+            row.forEach(function(cell){
+                var c = $('<td></td>').text(cell);
+                r.append(c);
+            });
+            $('#table').append(r);
+        })
+    });
+</script>
+</body>
+</html>
