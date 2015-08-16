@@ -7,7 +7,3 @@ applications:
   path: target/dataset-reader-sample-${version}.jar
   services: 
   - hdfs-instance
-  env:
-    SPRING_PROFILES_ACTIVE: "cloud"
-    #HDFS_USER: "hdfs"
-    #HDFS_URI: "hdfs://ip-10-10-10-217.eu-west-1.compute.internal:8020/cf/broker/instances/77fca4b7-5e06-4c40-909e-36fcaff90534/"

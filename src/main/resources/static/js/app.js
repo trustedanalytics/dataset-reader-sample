@@ -15,10 +15,19 @@
  */
 (function(){
 
-    function getHistogram(data, key) {
-        var values = _.pluck(data, key).map(function(value){
-            return parseFloat(value);
-        });
+    var IN_BYTES = 'ln_ibyt_SUM';
+    var OUT_BYTES = 'ln_obyt_SUM';
+    var DEGREES = 'ln_degree';
+    var W_DEGREES = 'ln_weighted_degree';
+
+    var keys = [
+        IN_BYTES,
+        OUT_BYTES,
+        DEGREES,
+        W_DEGREES
+    ];
+
+    function getHistogram(values) {
         var min = _.min(values);
         var max = _.max(values);
         var grouped = _.groupBy(values, function(value){
@@ -32,15 +41,7 @@
         return histogram;
     }
 
-    function getScatter(data, key1, key2) {
-        var values1 = _.pluck(data, key1).map(function(value){
-            return parseFloat(value);
-        });
-
-        var values2 = _.pluck(data, key2).map(function(value){
-            return parseFloat(value);
-        });
-
+    function getScatter(values1, values2) {
         return _.zip(values1, values2);
     }
 
@@ -74,35 +75,31 @@
         });
     }
 
+    function draw(data) {
+        _.each(keys, function(key1) {
+            _.each(keys, function(key2) {
+                if(key1 === key2) {
+                    drawHistogram('histogram_' + key1, getHistogram(data[key1]));
+                } else {
+                    drawScatter('scatter_' + key2 + '_' + key1, getScatter(data[key1], data[key2]));
+                }
+            });
+        });
+    }
+
     $.get('/rest/parsed-dataset', {}, function(data) {
         var header = data[0];
         data = data.slice(1);
 
-        var inBytesKey = header.indexOf('ln_ibyt_SUM');
-        var outBytesKey = header.indexOf('ln_obyt_SUM');
-        var degreeKey = header.indexOf('ln_degree');
-        var weightedDegreeKey = header.indexOf('ln_weighted_degree');
+        var values = {};
+        _.each(keys, function(key) {
+            values[key] = _.pluck(data, header.indexOf(key))
+                .map(function(value) {
+                    return parseFloat(value);
+                });
+        });
 
-        drawHistogram('histogram_inbytes', getHistogram(data, inBytesKey));
-        drawHistogram('histogram_outbytes', getHistogram(data, outBytesKey));
-        drawHistogram('histogram_degree', getHistogram(data, degreeKey));
-        drawHistogram('histogram_weighted_degree', getHistogram(data, weightedDegreeKey));
-
-        drawScatter('scatter_inbytes_outbytes', getScatter(data, inBytesKey, outBytesKey));
-        drawScatter('scatter_inbytes_degree', getScatter(data, inBytesKey, degreeKey));
-        drawScatter('scatter_inbytes_weighted_degree', getScatter(data, inBytesKey, weightedDegreeKey));
-
-        drawScatter('scatter_outbytes_inbytes', getScatter(data, outBytesKey, inBytesKey));
-        drawScatter('scatter_outbytes_degree', getScatter(data, outBytesKey, degreeKey));
-        drawScatter('scatter_outbytes_weighted_degree', getScatter(data, outBytesKey, weightedDegreeKey));
-
-        drawScatter('scatter_degree_inbytes', getScatter(data, degreeKey, inBytesKey));
-        drawScatter('scatter_degree_outbytes', getScatter(data, degreeKey, outBytesKey));
-        drawScatter('scatter_degree_weighted_degree', getScatter(data, degreeKey, weightedDegreeKey));
-
-        drawScatter('scatter_weighted_degree_inbytes', getScatter(data, weightedDegreeKey, inBytesKey));
-        drawScatter('scatter_weighted_degree_outbytes', getScatter(data, weightedDegreeKey, outBytesKey));
-        drawScatter('scatter_weighted_degree_degree', getScatter(data, weightedDegreeKey, degreeKey));
+        draw(values);
 
     });
 })();

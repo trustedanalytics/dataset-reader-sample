@@ -53,17 +53,11 @@ public class DataProvider {
 
         FileSystem fs = hdfsConfig.getFileSystem();
         InputStream is = fs.open(new Path(filePath));
-		/*
-		 * 
-		 * do something with the stream
-		 * 
-		 */
 
         StringWriter writer = new StringWriter();
         IOUtils.copy(is, writer, "utf-8");
         String data = writer.toString();
 
-        // Create resource with new value
         return data;
     }
 
