@@ -44,7 +44,7 @@ cf target -o <organization name> -s <space name>
   :information_source: E.g. if you set host to "dataset-reader" and your platform URL is "example.com", the application will be hosted under 'dataset-reader.example.com' domain.
 1. Push dataset-reader to the platform
   
-```cf push```
+  ```cf push```
 1. Application will start but won't show anything, because it doesn't know which file to serve. To fix that, pass the path to the file on HDFS as a environment variable called "FILE":
   
   ```
