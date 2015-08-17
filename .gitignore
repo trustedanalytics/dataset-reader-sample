@@ -5,7 +5,8 @@
 *.iml
 
 # Eclipse files
-/.project
-/.settings
+.project
+.settings
+.classpath
 
 /manifest.yml
