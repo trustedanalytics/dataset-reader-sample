@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.trustedanalytics</groupId>
@@ -82,23 +81,27 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
+                <artifactId>maven-resources-plugin</artifactId>
                 <executions>
                     <execution>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
+                        <id>copy-resources</id>
                         <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/target/classes</directory>
+                                    <includes>
+                                        <include>manifest.yml</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <executable>cp</executable>
-                    <arguments>
-                        <argument>target/classes/manifest.yml</argument>
-                        <argument>manifest.yml</argument>
-                    </arguments>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>com.mycila</groupId>
