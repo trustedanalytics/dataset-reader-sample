@@ -20,6 +20,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.trustedanalytics.resourceserver.data.DataProvider;
+import org.trustedanalytics.resourceserver.data.InputStreamProvider;
+import org.trustedanalytics.utils.hdfs.HdfsConfig;
 
 @Configuration
 @ComponentScan("org.trustedanalytics.utils.hdfs")
@@ -28,5 +30,10 @@ public class ApplicationConfiguration {
     @Bean
     public DataProvider getDataProvider() {
         return new DataProvider();
+    }
+
+    @Bean
+    public InputStreamProvider getInputStreamProvider(HdfsConfig hdfsConfig) {
+        return new InputStreamProvider(hdfsConfig);
     }
 }

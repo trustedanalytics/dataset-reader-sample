@@ -2,6 +2,7 @@
 applications:
 - name: dataset-reader
   memory: 512M
+  disk_quota: 512M
   instances: 1
   host: dataset-reader
   path: target/dataset-reader-sample-${version}.jar

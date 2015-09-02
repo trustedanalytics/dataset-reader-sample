@@ -20,11 +20,9 @@ import com.google.common.collect.Lists;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.io.IOUtils;
-import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.trustedanalytics.utils.hdfs.HdfsConfig;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,13 +44,12 @@ public class DataProvider {
     private static final Logger LOGGER = Logger.getLogger(DataProvider.class.getName());
 
     @Autowired
-    private HdfsConfig hdfsConfig;
+    private InputStreamProvider inputStreamProvider;
 
     public String getContent(String filePath)
         throws IllegalArgumentException, IOException {
 
-        FileSystem fs = hdfsConfig.getFileSystem();
-        InputStream is = fs.open(new Path(filePath));
+        InputStream is = inputStreamProvider.getInputStream(new Path(filePath));
 
         StringWriter writer = new StringWriter();
         IOUtils.copy(is, writer, "utf-8");
@@ -64,19 +61,21 @@ public class DataProvider {
     public List<List<String>> getParsedContent(String path)
         throws IllegalArgumentException, IOException {
 
-        FileSystem fs = hdfsConfig.getFileSystem();
-        InputStream is = fs.open(new Path(path));
+        InputStream is = inputStreamProvider.getInputStream(new Path(path));
 
         List<List<String>> result = null;
-        try (CSVParser parser = new CSVParser(new InputStreamReader(is), CSVFormat.newFormat(','))) {
+        try (CSVParser parser = new CSVParser(new InputStreamReader(is),
+            CSVFormat.newFormat(','))) {
             result = parser.getRecords().stream()
                 .map(row -> Lists.newArrayList(row.iterator()))
                 .collect(Collectors.toList());
-        } catch(Exception e) {
+        } catch (Exception e) {
             LOGGER.log(Level.SEVERE, "Error parsing CSV file", e);
         }
 
         return result;
     }
+
+
 
 }
