@@ -44,10 +44,12 @@ public class InputStreamProvider {
     }
 
     /**
-     * Gets a InputStream for a path on HDFS. If given path is a directory, it will read
-     * files inside that dir and create a SequenceInputStream from them, which emulates
-     * reading from directory just like from a regular file. Notice that this method is not meant
-     * to read huge datasets (as well as the whole project).
+     * Gets an InputStream for a path on HDFS.
+     *
+     * If given path is a directory, it will read files inside that dir and create
+     * a SequenceInputStream from them, which emulates reading from directory just like from
+     * a regular file. Notice that this method is not meant to read huge datasets
+     * (as well as the whole project).
      * @param path
      * @return
      * @throws IOException
