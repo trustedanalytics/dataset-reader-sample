@@ -6,5 +6,3 @@ applications:
   instances: 1
   host: dataset-reader
   path: target/dataset-reader-sample-${version}.jar
-  services: 
-  - hdfs-instance
