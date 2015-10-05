@@ -20,7 +20,7 @@
         </repository>
         <repository>
             <id>org.trustedanalytics</id>
-            <url>https://maven.gotapaas.com/</url>
+            <url>https://maven.demotrustedanalytics.com/</url>
         </repository>
     </repositories>
 
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>org.trustedanalytics</groupId>
             <artifactId>hadoop-spring-utils</artifactId>
-            <version>0.4.2-SNAPSHOT</version>
+            <version>0.4.7</version>
         </dependency>
 
         <dependency>
