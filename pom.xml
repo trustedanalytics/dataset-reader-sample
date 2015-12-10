@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.trustedanalytics</groupId>
     <artifactId>dataset-reader-sample</artifactId>
-    <version>0.4.2</version>
+    <version>0.4.3</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
