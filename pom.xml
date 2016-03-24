@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.trustedanalytics</groupId>
     <artifactId>dataset-reader-sample</artifactId>
-    <version>0.4.3</version>
+    <version>0.4.4</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -17,10 +17,6 @@
         <repository>
             <id>cloudera</id>
             <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
-        </repository>
-        <repository>
-            <id>org.trustedanalytics</id>
-            <url>https://maven.demotrustedanalytics.com/</url>
         </repository>
     </repositories>
 
