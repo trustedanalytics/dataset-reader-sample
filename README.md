@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/trustedanalytics/dataset-reader-sample.svg)](https://travis-ci.org/trustedanalytics/dataset-reader-sample)
+
 # Dataset Reader: A Sample Application for Reading a Dataset from HDFS
 
 This project contains a sample application that is able to read a dataset from HDFS and present it in a graphical form to user.
