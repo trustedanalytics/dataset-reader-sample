@@ -65,10 +65,40 @@ cf target -o <organization name> -s <space name>
   :information_source: For example, if you set host to "dataset-reader" and your platform URL is "example.com", the application will be hosted under 'dataset-reader.example.com' domain.
 1. Push dataset-reader to the platform
   
-  ```cf push```
-1. Application will start but won't show anything because it doesn't know which file to serve. To fix that, pass the path to the file on HDFS (acquired in step [Preparing data](#preparing-data)) as a environment variable called "FILE":
-  
   ```
-cf set-env <application name> FILE <path to file on HDFS>
-cf restart <application name>
-```
+  cf push
+  ```
+  
+  Application will fail to start anything because it doesn't know which file to serve and how to connect to HDFS.
+1. Create HDFS service instance called `hdfs-instance`. You can do that using command line or via browser:
+  1. Using CF CLI:
+  
+    ```
+    cf create-service hdfs shared hdfs-instance
+    ```
+  1. Using WebUI: 
+    1. Go to `Marketplace`
+    2. Select `HDFS` service offering
+    3. Type the name of the instance: `hdfs-instance` (**Note:** the instance must be called `hdfs-instance`)
+    4. Click `Create new instance`
+1. Bind the `hdfs-instance` to application
+  1. Using command line tool:
+  
+    ```
+    cf bind-service dataset-reader hdfs-instance
+    ```
+  1. Using WebUI:
+    1. Go to `Applications` list
+    1. Go to details of `dataset-reader` application
+    2. Switch to `Bindings` tab
+    3. Click `Bind` button next to the `hdfs-instance` (you can use filtering functionality to search for the service)
+1. Pass the path to the file on HDFS (acquired in step [Preparing data](#preparing-data)) as a environment variable called "FILE":
+
+  ```
+  cf set-env <application name> FILE <path to file on HDFS>
+  ```
+1. Restart the application to reload the environment variables
+
+  ```
+  cf restart <application name>
+  ```
