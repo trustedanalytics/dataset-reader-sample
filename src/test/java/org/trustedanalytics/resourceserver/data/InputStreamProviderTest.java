@@ -28,11 +28,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
-import org.trustedanalytics.utils.hdfs.HdfsConfig;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,19 +42,10 @@ import java.io.SequenceInputStream;
 public class InputStreamProviderTest {
 
     @Mock
-    private HdfsConfig hdfsConfig;
-
-    @Mock
     private FileSystem fileSystem;
 
+    @InjectMocks
     private InputStreamProvider sut;
-
-    @Before
-    public void setUp() {
-        when(hdfsConfig.getFileSystem()).thenReturn(fileSystem);
-
-        sut = new InputStreamProvider(hdfsConfig);
-    }
 
     @Test
     public void test_getContent_fileGiven_getStandardInputStream() throws IOException {

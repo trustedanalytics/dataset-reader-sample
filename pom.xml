@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.trustedanalytics</groupId>
     <artifactId>dataset-reader-sample</artifactId>
-    <version>0.4.4</version>
+    <version>0.4.5</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -26,11 +26,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.trustedanalytics</groupId>
-            <artifactId>hadoop-spring-utils</artifactId>
-            <version>0.4.7</version>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -62,6 +57,17 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.trustedanalytics</groupId>
+            <artifactId>hadoop-utils</artifactId>
+            <version>0.6.5</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
     <build>

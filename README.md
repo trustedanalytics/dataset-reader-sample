@@ -92,6 +92,7 @@ cf target -o <organization name> -s <space name>
     1. Go to details of `dataset-reader` application
     2. Switch to `Bindings` tab
     3. Click `Bind` button next to the `hdfs-instance` (you can use filtering functionality to search for the service)
+1. Create an instance of `kerberos` service, named `kerberos-service`, in analogous way as the one above and bind it as well. 
 1. Pass the path to the file on HDFS (acquired in step [Preparing data](#preparing-data)) as a environment variable called "FILE":
 
   ```

@@ -15,15 +15,11 @@
  */
 package org.trustedanalytics.resourceserver.data;
 
-import org.apache.hadoop.fs.FileStatus;
-import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.Path;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.trustedanalytics.utils.hdfs.HdfsConfig;
-
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.SequenceInputStream;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -32,16 +28,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import javax.security.auth.login.LoginException;
+
+import org.apache.hadoop.fs.FileStatus;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.trustedanalytics.hadoop.config.client.helper.Hdfs;
+
+@Configuration
 public class InputStreamProvider {
 
     private static final Logger LOGGER = Logger.getLogger(InputStreamProvider.class.getName());
 
-    private final HdfsConfig hdfsConfig;
-
     @Autowired
-    public InputStreamProvider(HdfsConfig hdfsConfig) {
-        this.hdfsConfig = hdfsConfig;
-    }
+    private FileSystem fs;
 
     /**
      * Gets an InputStream for a path on HDFS.
@@ -56,8 +58,6 @@ public class InputStreamProvider {
      */
     public InputStream getInputStream(Path path) throws IOException {
         Objects.requireNonNull(path);
-
-        FileSystem fs = hdfsConfig.getFileSystem();
         if (fs.isFile(path)) {
             return fs.open(path);
         } else if(fs.isDirectory(path)) {

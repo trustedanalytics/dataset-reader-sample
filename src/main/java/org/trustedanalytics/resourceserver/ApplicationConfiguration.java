@@ -16,15 +16,18 @@
 
 package org.trustedanalytics.resourceserver;
 
+import org.apache.hadoop.fs.FileSystem;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.trustedanalytics.hadoop.config.client.helper.Hdfs;
 import org.trustedanalytics.resourceserver.data.DataProvider;
-import org.trustedanalytics.resourceserver.data.InputStreamProvider;
-import org.trustedanalytics.utils.hdfs.HdfsConfig;
+
+import javax.security.auth.login.LoginException;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 @Configuration
-@ComponentScan("org.trustedanalytics.utils.hdfs")
 public class ApplicationConfiguration {
 
     @Bean
@@ -33,7 +36,9 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public InputStreamProvider getInputStreamProvider(HdfsConfig hdfsConfig) {
-        return new InputStreamProvider(hdfsConfig);
+    public FileSystem getFileSystem() throws IOException, LoginException,
+        InterruptedException, URISyntaxException {
+      return Hdfs.newInstance().createFileSystem();
     }
+
 }
