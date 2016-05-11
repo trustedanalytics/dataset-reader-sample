@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/trustedanalytics/dataset-reader-sample.svg)](https://travis-ci.org/trustedanalytics/dataset-reader-sample)
+[![Dependency Status](https://www.versioneye.com/user/projects/57236598ba37ce00464e02ef/badge.svg?style=flat)](https://www.versioneye.com/user/projects/57236598ba37ce00464e02ef)
 
 # Dataset Reader: A Sample Application for Reading a Dataset from HDFS
 
