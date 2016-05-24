@@ -126,8 +126,12 @@
                     <headerDefinitions>
                         <headerDefinition>license/regex_header_pattern.xml</headerDefinition>
                     </headerDefinitions>
-                    <header>license/license_header.txt</header>
-                    <includes>
+                    <header>license/license_header_2016.txt</header>
+                    <validHeaders>
+                        <validHeader>license/license_header_2015.txt</validHeader>
+                        <validHeader>license/license_header_2016.txt</validHeader>
+                    </validHeaders>
+		    <includes>
                         <include>src/**/*.java</include>
                         <include>src/main/resources/static/**/*.js</include>
                         <include>src/main/resources/static/**/*.html</include>
