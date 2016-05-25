@@ -33,7 +33,11 @@ You can either use already prepared dataset, ready to be visualised (see: [Using
 
 To prepare the dataset on you own, follow the steps describe in [Workshop Module 1](workshop/Intel Workshop Module 1 Final.pdf)
 
-## Compilation and running
+## Deploying application to TAP
+
+### Manual deployment
+
+#### Compilation and running
 
 1. Clone this repository
   
@@ -45,7 +49,7 @@ To prepare the dataset on you own, follow the steps describe in [Workshop Module
 
   ```FILE=<path_to_the_file> mvn spring-boot:run -Dspring.profiles.active=local```
 
-## Pushing to the platform
+#### Pushing to the platform
 
 1. Make Java package
 
@@ -104,3 +108,13 @@ cf target -o <organization name> -s <space name>
   ```
   cf restart <application name>
   ```
+
+### Automated deployment
+
+1. Clone this repository ```git clone https://github.com/trustedanalytics/dataset-reader-sample.git```
+1. Build project using `mvn package` command
+1. Switch to `deploy` directory: `cd deploy`
+1. Install tox: `sudo -E pip install --upgrade tox`
+1. Run: `tox`
+1. Activate virtualenv with installed dependencies: `. .tox/py27/bin/activate`
+1. Run deployment script: `python deploy.py`, the script will use parameters provided on input. Alternatively, provide parameters when running script. (`python deploy.py -h` to check script parameters with their descriptions).
