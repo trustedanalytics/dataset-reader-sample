@@ -10,3 +10,6 @@
 .classpath
 
 /manifest.yml
+
+# Python files
+.tox/

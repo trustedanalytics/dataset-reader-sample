@@ -40,7 +40,7 @@ cf_cli.bind_service(ARGS.app_name, 'hdfs-instance')
 cf_cli.bind_service(ARGS.app_name, 'kerberos-service')
 
 LOCAL_DATASET_PATH = "data/nf-data-application.csv"
-HDFS_DATASET_PATH = cf_helpers.upload_to_hdfs(ARGS.base_url, CF_INFO.org,
+HDFS_DATASET_PATH = cf_helpers.upload_to_hdfs(ARGS.api_url, CF_INFO.org,
                                             '{}/{}'.format(PROJECT_DIR, LOCAL_DATASET_PATH),
                                             'nf-data-application')
 
