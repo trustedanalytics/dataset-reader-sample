@@ -31,6 +31,9 @@ mkdir ${PACKAGE_CATALOG}
 cp manifest.yml ${PACKAGE_CATALOG}
 cp --parents target/${JAR_NAME} ${PACKAGE_CATALOG}
 cp --parents data/nf-data-application.csv ${PACKAGE_CATALOG}
+cp --parents deploy/deploy.py ${PACKAGE_CATALOG}
+cp --parents deploy/requirements.txt ${PACKAGE_CATALOG}
+cp --parents deploy/tox.ini ${PACKAGE_CATALOG}
 
 # prepare build manifest
 echo "commit_sha=$(git rev-parse HEAD)" > ${PACKAGE_CATALOG}/build_info.ini
