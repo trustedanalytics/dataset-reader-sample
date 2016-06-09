@@ -112,7 +112,6 @@ cf target -o <organization name> -s <space name>
 ### Automated deployment
 
 1. Clone this repository ```git clone https://github.com/trustedanalytics/dataset-reader-sample.git```
-1. Build project using `mvn package` command
 1. Switch to `deploy` directory: `cd deploy`
 1. Install tox: `sudo -E pip install --upgrade tox`
 1. Run: `tox`
