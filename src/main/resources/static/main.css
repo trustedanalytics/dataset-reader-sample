@@ -92,3 +92,26 @@ h1 > img {
     height: 25%;
     float: left;
 }
+
+.link {
+    cursor: pointer;
+    text-align: center;
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    font-size: 15px;
+    color: #000000;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+i.fa {
+    vertical-align: middle;
+    margin-left: 5px;
+    font-size: 14px;
+}
