@@ -24,7 +24,7 @@ You can either use already prepared dataset, ready to be visualised (see: [Using
 1. Select `Submit transfer` tab
 1. Fill in dataset title and choose local file upload
 1. Select file to upload (sample dataset can be found here: [data/nf-data-application.csv](data/nf-data-application.csv))
-1. Alternatively, you can select upload using a link and specify link to raw file on github (i.e. [nf-data-application.csv](https://github.com/intel-data/dataset-reader-sample/raw/master/data/nf-data-application.csv)
+1. Alternatively, you can select upload using a link and specify link to raw file on github (i.e. [nf-data-application.csv](https://raw.githubusercontent.com/trustedanalytics/dataset-reader-sample/master/data/nf-data-application.csv)
 1. Submit transfer
 1. When the transfer finishes, a new dataset will be visible in `Data catalog`
 1. To acquire link to file on HDFS go to the recently created dataset and copy the value of `targetUri` property. 
