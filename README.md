@@ -84,8 +84,9 @@ cf target -o <organization name> -s <space name>
   1. Using WebUI: 
     1. Go to `Marketplace`
     2. Select `HDFS` service offering
-    3. Type the name of the instance: `hdfs-instance` (**Note:** the instance must be called `hdfs-instance`)
-    4. Click `Create new instance`
+    3. Choose plan `Shared`
+    4. Type the name of the instance: `hdfs-instance` (**Note:** the instance must be called `hdfs-instance`)
+    5. Click `Create new instance`
 1. Bind the `hdfs-instance` to application
   1. Using command line tool:
   
