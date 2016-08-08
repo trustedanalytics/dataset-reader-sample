@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.trustedanalytics</groupId>
     <artifactId>dataset-reader-sample</artifactId>
-    <version>0.5.4</version>
+    <version>0.5.5</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -131,12 +131,16 @@
                         <validHeader>license/license_header_2015.txt</validHeader>
                         <validHeader>license/license_header_2016.txt</validHeader>
                     </validHeaders>
-		            <includes>
+                    <includes>
                         <include>src/**/*.java</include>
-                        <include>src/main/resources/static/**/*.js</include>
+                        <include>src/main/resources/static/js/*.js</include>
+                        <include>src/main/resources/static/css/*.css</include>
                         <include>src/main/resources/static/**/*.html</include>
-                        <include>src/main/resources/static/**/*.css</include>
                     </includes>
+                    <excludes>
+                        <include>src/main/resources/static/js/third-party/**</include>
+                        <include>src/main/resources/static/css/third-party/**</include>
+                    </excludes>
 
                     <mapping>
                         <java>JAVADOC_STYLE</java>
