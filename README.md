@@ -70,9 +70,8 @@ cf target -o <organization name> -s <space name>
   
   ```
   name: <your application name>
-  host: <application host name>
   ```
-  :information_source: For example, if you set host to "dataset-reader" and your platform URL is "example.com", the application will be hosted under 'dataset-reader.example.com' domain.
+  :information_source: For example, if you set name to "dataset-reader" and your platform URL is "example.com", the application will be hosted under 'dataset-reader.example.com' domain.
 1. Push dataset-reader to the platform
   
   ```
