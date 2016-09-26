@@ -33,6 +33,11 @@ You can either use already prepared dataset, ready to be visualised (see: [Using
 
 To prepare the dataset on you own, follow the steps describe in [Workshop Module 1](workshop/Intel Workshop Module 1 Final.pdf)
 
+Useful links:
+
+1. Training dataset: [nf-hour.csv](https://s3-us-west-2.amazonaws.com/analytics-tool-kit/public/datasets/latest/nf-hour.csv)
+1. Jupyter notebook: [Netflow_Demo.pynb](src/analytics/Netflow_Demo.ipynb)
+
 ## Deploying application to TAP
 
 ### Manual deployment
